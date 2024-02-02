@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NumberPuzzle from './NumberPuzzle';
+import TowersOfHanoi from './TowersOfHanoi';
+import Navbar from './Navbar';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <DndProvider backend={HTML5Backend}>
+            <Router>
+                <div className="App">
+                    <Navbar />
+                    <Routes>
+                        <Route path="/number-puzzle" element={<NumberPuzzle />} />
+                        <Route path="/towers-of-hanoi" element={<TowersOfHanoi />} />
+                    </Routes>
+                </div>
+            </Router>
+        </DndProvider>
+    );
 }
 
 export default App;
